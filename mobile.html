@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GG Arena — Wireframes</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+
+
+
+<style>
+@media print {
+
+  @page{
+    size:A4;
+    margin:15mm;
+  }
+
+  body{
+    margin:0;
+    padding:0;
+  }
+
+  img{
+    max-width:100%;
+  }
+
+  table{
+    width:100%;
+    border-collapse: collapse;
+  }
+
+  tr, td{
+    page-break-inside: avoid;
+  }
+
+}
+
+
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #2a2a2a;
+    --muted: #444;
+    --text-dim: #888;
+    --text: #ccc;
+    --text-bright: #f0f0f0;
+    --accent: #f0f0f0;
+    --phone-bg: #fafafa;
+    --phone-border: #111;
+    --screen-bg: #fff;
+    --ui-dark: #111;
+    --ui-mid: #555;
+    --ui-light: #e8e8e8;
+    --ui-border: #ccc;
+    --tag-dark-bg: #111;
+    --tag-dark-text: #fff;
+    --tag-light-bg: #eee;
+    --tag-light-text: #111;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: 'DM Mono', monospace;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .site-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px; font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--text-bright);
+  }
+  .site-header span { font-size: 11px; color: var(--text-dim); }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    padding: 48px 40px 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+  }
+  .section-label:first-of-type { border-top: none; }
+
+  /* ── GRID ── */
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 0 40px 60px;
+  }
+
+  /* ── SCREEN CARD ── */
+  .card {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 12px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.4s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card-label {
+    font-size: 10px; color: var(--text-dim);
+    letter-spacing: 0.08em; text-align: center;
+    text-transform: uppercase;
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px; font-weight: 700;
+    color: var(--text-bright); text-align: center;
+  }
+
+  /* ── PHONE SHELL ── */
+  .phone {
+    width: 260px;
+    background: #f0f0f0;
+    border-radius: 36px;
+    border: 2.5px solid #222;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 52px;
+  }
+
+  /* Status bar */
+  .status-bar {
+    background: #111;
+    height: 26px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px;
+    font-size: 9px; color: #fff;
+    position: relative;
+  }
+  .notch {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    top: 0; width: 70px; height: 20px;
+    background: #111; border-radius: 0 0 14px 14px;
+  }
+
+  /* Screen body */
+  .screen {
+    background: #fff;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Bottom nav */
+  .nav-bar {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 52px;
+    background: #f5f5f5;
+    border-top: 1px solid #ddd;
+    display: flex;
+  }
+  .nav-item {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 2px; font-size: 8px; color: #999;
+  }
+  .nav-item.active { color: #111; font-weight: 500; }
+  .nav-item .nav-icon {
+    width: 16px; height: 12px;
+    border: 1.5px solid currentColor;
+    border-radius: 2px;
+  }
+
+  /* ── UI COMPONENTS ── */
+  .app-header {
+    background: #111; color: #fff;
+    padding: 10px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.05em;
+  }
+  .app-header .back { font-size: 9px; color: #aaa; }
+  .app-header .right { font-size: 9px; color: #aaa; }
+
+  .p { padding: 12px 14px 0; }
+
+  .field {
+    background: #fff; border: 1px solid #ccc;
+    border-radius: 6px; padding: 7px 10px;
+    font-size: 9px; color: #aaa;
+    margin-bottom: 8px; font-family: 'DM Mono', monospace;
+  }
+  .field-label { font-size: 9px; color: #333; font-weight: 500; margin-bottom: 3px; }
+
+  .btn {
+    display: block; width: 100%;
+    background: #111; color: #fff;
+    border: none; border-radius: 6px;
+    padding: 9px; text-align: center;
+    font-size: 9px; font-weight: 500; letter-spacing: 0.05em;
+    font-family: 'DM Mono', monospace;
+    cursor: pointer; margin-bottom: 6px;
+  }
+  .btn.outline {
+    background: #fff; color: #111;
+    border: 1.5px solid #222;
+  }
+  .btn.sm { padding: 6px 10px; font-size: 8px; border-radius: 5px; width: auto; display: inline-block; }
+
+  .row { display: flex; gap: 6px; }
+  .row > * { flex: 1; }
+
+  .card-box {
+    border: 1px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 10px; margin-bottom: 6px;
+    background: #fafafa;
+  }
+  .card-box.dark { background: #111; border-color: #111; }
+  .card-box.dark * { color: #fff !important; }
+  .card-box.dark .dim { color: #888 !important; }
+
+  .badge {
+    display: inline-block; border-radius: 20px;
+    padding: 2px 7px; font-size: 7.5px; font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .badge.dark { background: #111; color: #fff; }
+  .badge.light { background: #eee; color: #333; }
+  .badge.green { background: #d4edda; color: #155724; }
+  .badge.red { background: #f8d7da; color: #721c24; }
+
+  .stat-box {
+    background: #f5f5f5; border: 1px solid #e0e0e0;
+    border-radius: 8px; padding: 8px 6px;
+    text-align: center; flex: 1;
+  }
+  .stat-val { font-size: 14px; font-weight: 700; color: #111; font-family: 'Syne', sans-serif; }
+  .stat-key { font-size: 7.5px; color: #888; margin-top: 2px; }
+
+  .list-item {
+    border: 1px solid #e8e8e8; border-radius: 7px;
+    padding: 8px 10px; margin-bottom: 5px;
+    background: #fff;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .list-item .li-title { font-size: 9px; font-weight: 500; color: #111; }
+  .list-item .li-sub { font-size: 8px; color: #888; margin-top: 2px; }
+  .list-item .li-right { font-size: 9px; color: #333; font-weight: 500; text-align: right; }
+
+  .hero-box {
+    background: #111; border-radius: 8px;
+    padding: 12px; margin-bottom: 8px; color: #fff;
+  }
+  .hero-box .ht { font-size: 11px; font-weight: 700; font-family: 'Syne', sans-serif; }
+  .hero-box .hs { font-size: 8px; color: #aaa; margin-top: 3px; }
+
+  .progress-wrap { background: #333; border-radius: 99px; height: 4px; margin: 6px 0; overflow: hidden; }
+  .progress-fill { background: #fff; height: 100%; border-radius: 99px; }
+
+  .tab-row { display: flex; gap: 4px; margin-bottom: 8px; }
+  .tab {
+    flex: 1; text-align: center; padding: 5px 2px;
+    border-radius: 6px; font-size: 8px; border: 1px solid #e0e0e0;
+    color: #888; background: #f5f5f5;
+  }
+  .tab.active { background: #111; color: #fff; border-color: #111; }
+
+  .divider { border: none; border-top: 1px solid #eee; margin: 8px 0; }
+
+  .section-title { font-size: 9px; font-weight: 700; color: #333; margin-bottom: 6px; letter-spacing: 0.04em; }
+
+  .img-placeholder {
+    background: #e8e8e8; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; color: #aaa; margin-bottom: 6px;
+  }
+
+  .amount-grid { display: flex; gap: 4px; margin-bottom: 8px; }
+  .amount-opt {
+    flex: 1; text-align: center; padding: 8px 4px;
+    border: 1.5px solid #ddd; border-radius: 7px;
+    font-size: 10px; font-weight: 700; color: #333; background: #fafafa;
+  }
+  .amount-opt.selected { background: #111; color: #fff; border-color: #111; }
+
+  .note-box {
+    background: #f5f5f5; border: 1px solid #e0e0e0;
+    border-radius: 6px; padding: 7px 9px;
+    font-size: 8px; color: #555; margin-bottom: 8px;
+  }
+
+  .radio-row { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; font-size: 8.5px; color: #333; }
+  .radio-dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #999; background: #eee; flex-shrink: 0; }
+
+  .tx-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7px 10px; border-bottom: 1px solid #f0f0f0;
+  }
+  .tx-item:last-child { border-bottom: none; }
+  .tx-amt.pos { color: #1a7a3c; font-weight: 600; }
+  .tx-amt.neg { color: #b91c1c; font-weight: 600; }
+
+  .leaderboard-row {
+    display: flex; align-items: center;
+    padding: 6px 10px; border-bottom: 1px solid #f0f0f0;
+    font-size: 9px;
+  }
+  .leaderboard-row.me { background: #111; color: #fff; }
+  .leaderboard-row .rank { width: 20px; font-weight: 700; font-size: 8px; }
+  .leaderboard-row .name { flex: 1; }
+  .leaderboard-row .pts { font-weight: 600; font-size: 8px; }
+
+  .product-grid { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 14px 12px; }
+  .product-card {
+    width: calc(50% - 3px); border: 1px solid #e0e0e0;
+    border-radius: 8px; overflow: hidden; background: #fff;
+  }
+  .product-card .pi { height: 60px; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 8px; color: #aaa; }
+  .product-card .pd { padding: 6px 7px; }
+  .product-card .pname { font-size: 8.5px; font-weight: 600; color: #111; }
+  .product-card .pprice { font-size: 8px; color: #555; margin-top: 2px; }
+
+  .notif-item {
+    display: flex; gap: 8px;
+    padding: 8px 14px; border-bottom: 1px solid #f0f0f0;
+    align-items: flex-start;
+  }
+  .notif-item.unread { background: #f9f9f9; }
+  .notif-dot { width: 6px; height: 6px; background: #111; border-radius: 50%; margin-top: 3px; flex-shrink: 0; }
+  .notif-dot.empty { background: transparent; }
+  .notif-title { font-size: 9px; font-weight: 600; color: #111; }
+  .notif-sub { font-size: 8px; color: #777; margin-top: 2px; }
+  .notif-time { font-size: 7.5px; color: #aaa; margin-left: auto; flex-shrink: 0; }
+
+  .risk-card {
+    border: 1px solid #e0e0e0; border-radius: 8px;
+    padding: 10px; margin-bottom: 6px; background: #fafafa;
+  }
+  .risk-score { font-size: 11px; font-weight: 700; font-family: 'Syne', sans-serif; }
+
+  /* tier badges */
+  .tier-row { display: flex; gap: 4px; margin-bottom: 8px; }
+  .tier-badge {
+    flex: 1; text-align: center; padding: 8px 4px;
+    border-radius: 7px; font-size: 8px; border: 1px solid #ddd; background: #f5f5f5;
+    color: #888;
+  }
+  .tier-badge.active { background: #111; color: #fff; border-color: #111; font-weight: 700; }
+  .tier-icon { font-size: 14px; display: block; margin-bottom: 3px; }
+
+  /* avatar */
+  .avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: #ddd; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; color: #555; margin: 12px auto 6px;
+    font-family: 'Syne', sans-serif;
+    border: 2px solid #ccc;
+  }
+
+  .profile-name { text-align: center; font-size: 12px; font-weight: 700; color: #111; font-family: 'Syne', sans-serif; }
+  .profile-sub { text-align: center; font-size: 8px; color: #888; margin-bottom: 8px; }
+
+  .menu-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 9px 14px; border-bottom: 1px solid #f0f0f0;
+    font-size: 9px; color: #111;
+  }
+  .menu-item .mi-sub { font-size: 7.5px; color: #aaa; margin-top: 2px; }
+  .menu-item.danger { color: #b91c1c; }
+  .chevron { color: #bbb; }
+
+  /* Splash screen */
+  .splash-screen { background: #0d0d0d; min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; }
+  .splash-logo-box {
+    background: #1a1a1a; border: 1px solid #333; border-radius: 16px;
+    padding: 16px 24px; text-align: center; margin-bottom: 40px;
+  }
+  .splash-logo-box .logo-text { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: #fff; letter-spacing: 0.1em; }
+  .splash-logo-box .logo-tag { font-size: 8px; color: #666; margin-top: 4px; }
+  .splash-screen .btn { background: #f0f0f0; color: #111; margin-bottom: 8px; }
+  .splash-screen .btn.outline { background: transparent; color: #f0f0f0; border-color: #444; }
+  .splash-terms { font-size: 7.5px; color: #555; text-align: center; margin-top: 12px; }
+
+  /* filter pills */
+  .filter-row { display: flex; gap: 4px; overflow: hidden; padding: 0 14px; margin-bottom: 8px; }
+  .filter-pill {
+    padding: 4px 9px; border-radius: 20px; font-size: 8px;
+    background: #f0f0f0; color: #666; border: 1px solid #e0e0e0; white-space: nowrap;
+  }
+  .filter-pill.active { background: #111; color: #fff; border-color: #111; }
+
+  /* event card */
+  .event-card {
+    border: 1px solid #e8e8e8; border-radius: 8px;
+    padding: 10px; margin: 0 14px 6px; background: #fff;
+  }
+  .event-title { font-size: 10px; font-weight: 600; color: #111; }
+  .event-meta { font-size: 8px; color: #888; margin: 3px 0; }
+  .event-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+  .progress-bar { flex: 1; background: #eee; border-radius: 99px; height: 3px; margin-right: 8px; overflow: hidden; }
+  .progress-bar-fill { background: #111; height: 100%; border-radius: 99px; }
+
+  /* admin summary card */
+  .admin-stat-grid { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 14px 6px; }
+  .admin-stat {
+    width: calc(50% - 3px); background: #f5f5f5;
+    border: 1px solid #e8e8e8; border-radius: 8px;
+    padding: 8px; text-align: center;
+  }
+  .admin-stat .as-val { font-size: 13px; font-weight: 700; color: #111; font-family: 'Syne', sans-serif; }
+  .admin-stat .as-key { font-size: 7.5px; color: #888; margin-top: 2px; }
+  .admin-stat.warn { background: #fff8e1; border-color: #ffe082; }
+  .admin-stat.warn .as-val { color: #b45309; }
+
+  .action-list-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 9px 14px; border-bottom: 1px solid #f0f0f0;
+    font-size: 9px; color: #111;
+  }
+  .action-list-item .arrow { color: #bbb; }
+
+  /* user mgmt row */
+  .user-row {
+    border: 1px solid #e8e8e8; border-radius: 8px;
+    padding: 8px 10px; margin: 0 14px 5px; background: #fff;
+  }
+  .user-row-top { display: flex; align-items: center; justify-content: space-between; }
+  .user-row-name { font-size: 10px; font-weight: 600; color: #111; }
+  .user-row-meta { font-size: 7.5px; color: #888; margin-top: 3px; margin-bottom: 5px; }
+  .user-row-actions { display: flex; gap: 4px; }
+
+  /* wallet balance card */
+  .wallet-card {
+    background: #111; border-radius: 10px;
+    margin: 0 14px 8px; padding: 14px;
+    color: #fff;
+  }
+  .wallet-label { font-size: 8px; color: #888; }
+  .wallet-amount { font-size: 22px; font-weight: 700; font-family: 'Syne', sans-serif; color: #fff; margin: 4px 0 8px; }
+  .wallet-sub-row { display: flex; border-top: 1px solid #2a2a2a; padding-top: 8px; gap: 0; }
+  .wallet-sub { flex: 1; }
+  .wallet-sub-label { font-size: 7.5px; color: #666; }
+  .wallet-sub-val { font-size: 10px; font-weight: 600; color: #ccc; margin-top: 2px; }
+
+  /* house wallet */
+  .house-wallet {
+    background: #111; border-radius: 8px;
+    margin: 0 14px 8px; padding: 12px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .hw-label { font-size: 8px; color: #666; }
+  .hw-val { font-size: 14px; font-weight: 700; color: #fff; font-family: 'Syne', sans-serif; margin-top: 3px; }
+
+  /* KYC doc upload */
+  .upload-box {
+    background: #f5f5f5; border: 1.5px dashed #ccc;
+    border-radius: 8px; padding: 14px;
+    text-align: center; margin-bottom: 8px;
+  }
+  .upload-box .ub-title { font-size: 9px; color: #777; }
+  .upload-box .ub-sub { font-size: 7.5px; color: #aaa; margin-top: 4px; }
+
+  /* checkbox */
+  .checkbox-row { display: flex; align-items: flex-start; gap: 7px; margin-bottom: 10px; font-size: 8.5px; color: #333; }
+  .checkbox { width: 13px; height: 13px; border: 1.5px solid #ccc; border-radius: 3px; background: #f0f0f0; flex-shrink: 0; }
+
+  /* Financial summary */
+  .fin-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 10px; border-bottom: 1px solid #f0f0f0;
+    font-size: 9px;
+  }
+  .fin-row:last-child { border-bottom: none; }
+  .fin-row .fk { color: #555; }
+  .fin-row .fv { font-weight: 600; color: #111; }
+
+  /* Scrollable confirmation box */
+  .confirm-box { border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; margin-bottom: 8px; }
+  .confirm-row {
+    display: flex; justify-content: space-between;
+    padding: 6px 10px; border-bottom: 1px solid #f5f5f5;
+    font-size: 8.5px;
+  }
+  .confirm-row:last-child { border-bottom: none; }
+  .confirm-row .ck { color: #888; }
+  .confirm-row .cv { font-weight: 600; color: #111; }
+
+  /* event detail hero */
+  .event-hero {
+    background: #111; padding: 12px 14px; color: #fff; margin-bottom: 8px;
+  }
+  .event-hero-title { font-size: 13px; font-weight: 700; font-family: 'Syne', sans-serif; }
+  .event-hero-sub { font-size: 8px; color: #888; margin-top: 4px; }
+  .event-hero-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+  .event-prize { font-size: 11px; font-weight: 700; color: #fff; }
+
+  .info-grid { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 14px; margin-bottom: 8px; }
+  .info-cell {
+    width: calc(50% - 3px); background: #f5f5f5;
+    border: 1px solid #e8e8e8; border-radius: 7px; padding: 7px 8px;
+  }
+  .info-val { font-size: 10px; font-weight: 700; color: #111; }
+  .info-key { font-size: 7.5px; color: #888; margin-top: 2px; }
+
+  /* score input */
+  .score-row { display: flex; gap: 8px; padding: 0 14px; margin-bottom: 8px; }
+  .score-box { flex: 1; border: 1px solid #e0e0e0; border-radius: 8px; padding: 8px; text-align: center; }
+  .score-box .sb-label { font-size: 7.5px; color: #aaa; margin-bottom: 6px; }
+  .score-input { background: #f5f5f5; border: 1px solid #ddd; border-radius: 5px; padding: 6px; text-align: center; font-size: 11px; font-weight: 700; color: #333; }
+
+  /* GG Points screen */
+  .gg-card {
+    background: #111; border-radius: 10px; margin: 0 14px 8px; padding: 12px; color: #fff;
+  }
+  .gg-season { font-size: 8px; color: #777; }
+  .gg-pts { font-size: 20px; font-weight: 700; font-family: 'Syne', sans-serif; margin: 4px 0; }
+  .gg-caps { font-size: 7.5px; color: #666; margin-top: 4px; }
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>GG ARENA — WIREFRAMES</h1>
+  <span>24 SCREENS · MVP 1.1</span>
+</header>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION: AUTH -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section-label">01 — Authentication & Onboarding</div>
+<div class="grid">
+
+  <!-- 01 SPLASH -->
+  <div class="card" style="animation-delay:0.05s">
+    <div class="card-label">Screen 01</div>
+    <div class="card-title">Splash Screen</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen">
+        <div class="splash-screen">
+          <div class="splash-logo-box">
+            <div class="logo-text">GG ARENA</div>
+            <div class="logo-tag">Compete. Earn. Dominate.</div>
+          </div>
+          <div style="width:100%">
+            <div class="btn">GET STARTED</div>
+            <div class="btn outline">LOG IN</div>
+          </div>
+          <div class="splash-terms">By continuing you agree to our Terms & Privacy Policy</div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+  <!-- 02 REGISTER -->
+  <div class="card" style="animation-delay:0.1s">
+    <div class="card-label">Screen 02</div>
+    <div class="card-title">Register</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen">
+        <div class="app-header"><span class="back"></span><span>CREATE ACCOUNT</span><span class="right"></span></div>
+        <div class="p" style="padding-top:10px">
+          <div class="field-label">Username</div>
+          <div class="field">e.g. ProPlayer99</div>
+          <div class="field-label">Email Address</div>
+          <div class="field">your@email.com</div>
+          <div class="field-label">Password</div>
+          <div class="field">••••••••</div>
+          <div class="field-label">Confirm Password</div>
+          <div class="field">••••••••</div>
+          <div class="checkbox-row">
+            <div class="checkbox"></div>
+            <span>I confirm I am 18 years of age or older</span>
+          </div>
+          <div class="btn" style="margin-top:4px">CREATE ACCOUNT</div>
+          <div style="text-align:center;font-size:8px;color:#888;margin-top:4px">Already have an account? <b>Log In</b></div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+  <!-- 03 LOGIN -->
+  <div class="card" style="animation-delay:0.15s">
+    <div class="card-label">Screen 03</div>
+    <div class="card-title">Login</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen">
+        <div class="app-header"><span></span><span>LOG IN</span><span></span></div>
+        <div class="p" style="padding-top:8px">
+          <div style="background:#111;border-radius:8px;padding:10px 14px;text-align:center;margin-bottom:12px">
+            <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:#fff;letter-spacing:0.1em">GG ARENA</div>
+          </div>
+          <div class="field-label">Email Address</div>
+          <div class="field">your@email.com</div>
+          <div class="field-label">Password</div>
+          <div class="field">••••••••</div>
+          <div style="text-align:right;font-size:8px;color:#888;margin-bottom:10px">Forgot Password?</div>
+          <div class="btn">LOG IN</div>
+          <hr class="divider">
+          <div style="text-align:center;font-size:8px;color:#aaa;margin-bottom:6px">or</div>
+          <div class="btn outline">CONTINUE WITH GOOGLE</div>
+          <div style="text-align:center;font-size:8px;color:#888;margin-top:6px">Don't have an account? <b>Register</b></div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION: PLAYER DASHBOARD -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section-label">02 — Player Dashboard & Events</div>
+<div class="grid">
+
+  <!-- 04 HOME -->
+  <div class="card" style="animation-delay:0.05s">
+    <div class="card-label">Screen 04</div>
+    <div class="card-title">Home Dashboard</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>GG ARENA</span><span class="right">🔔</span></div>
+        <div style="padding:10px 14px 0">
+          <div class="hero-box">
+            <div class="ht">Welcome back, ProPlayer99 👋</div>
+            <div class="hs">Season 3  ·  Gold Tier</div>
+            <div class="progress-wrap" style="margin-top:6px"><div class="progress-fill" style="width:34%"></div></div>
+            <div style="font-size:8px;color:#888;margin-top:2px">340 / 1000 GG Points</div>
+          </div>
+          <div class="row" style="margin-bottom:8px">
+            <div class="stat-box"><div class="stat-val">340</div><div class="stat-key">GG PTS</div></div>
+            <div class="stat-box"><div class="stat-val">#12</div><div class="stat-key">RANK</div></div>
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-key">WINS</div></div>
+          </div>
+          <div class="section-title">ACTIVE EVENTS</div>
+        </div>
+        <div class="event-card">
+          <div class="event-title">Weekend Warrior Cup</div>
+          <div class="event-meta">Free Entry · GG Points Prize</div>
+          <div class="event-footer"><div class="progress-bar"><div class="progress-bar-fill" style="width:50%"></div></div><span class="badge dark">OPEN</span></div>
+        </div>
+        <div class="event-card">
+          <div class="event-title">Elite FC26 League</div>
+          <div class="event-meta">$5 Entry · $200 Prize Pool</div>
+          <div class="event-footer"><div class="progress-bar"><div class="progress-bar-fill" style="width:56%"></div></div><span class="badge light">2 SPOTS LEFT</span></div>
+        </div>
+        <div style="padding:4px 14px 0"><div class="btn">VIEW ALL EVENTS</div></div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item active"><div class="nav-icon"></div>Home</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Wallet</div>
+        <div class="nav-item"><div class="nav-icon"></div>Shop</div>
+        <div class="nav-item"><div class="nav-icon"></div>Profile</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 EVENT LIST -->
+  <div class="card" style="animation-delay:0.1s">
+    <div class="card-label">Screen 05</div>
+    <div class="card-title">Events List</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>EVENTS</span><span class="right">Filter</span></div>
+        <div style="padding:8px 14px 0">
+          <div class="tab-row">
+            <div class="tab">All</div><div class="tab active">Free</div><div class="tab">Premium</div><div class="tab">Mine</div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-title">Weekend Warrior Cup</div>
+          <div class="event-meta">FREE · GG Points · 32/64 Players</div>
+          <div class="event-footer"><div class="progress-bar"><div class="progress-bar-fill" style="width:50%"></div></div><span class="badge dark">OPEN</span></div>
+        </div>
+        <div class="event-card">
+          <div class="event-title">Elite FC26 League</div>
+          <div class="event-meta">$5.00 · $200 Pool · 18/32 Players</div>
+          <div class="event-footer"><div class="progress-bar"><div class="progress-bar-fill" style="width:56%"></div></div><span class="badge dark">OPEN</span></div>
+        </div>
+        <div class="event-card">
+          <div class="event-title">Champions Qualifier</div>
+          <div class="event-meta">$10.00 · $500 Pool · 64/64 Players</div>
+          <div class="event-footer"><div class="progress-bar"><div class="progress-bar-fill" style="width:100%"></div></div><span class="badge light">FULL</span></div>
+        </div>
+        <div class="event-card">
+          <div class="event-title">Daily Blitz</div>
+          <div class="event-meta">FREE · GG Points · 12/16 Players</div>
+          <div class="event-footer"><div class="progress-bar"><div class="progress-bar-fill" style="width:75%"></div></div><span class="badge dark">OPEN</span></div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon"></div>Home</div>
+        <div class="nav-item active"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Wallet</div>
+        <div class="nav-item"><div class="nav-icon"></div>Shop</div>
+        <div class="nav-item"><div class="nav-icon"></div>Profile</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 EVENT DETAIL -->
+  <div class="card" style="animation-delay:0.15s">
+    <div class="card-label">Screen 06</div>
+    <div class="card-title">Event Detail</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>EVENT DETAILS</span><span></span></div>
+        <div class="event-hero">
+          <div class="event-hero-title">Elite FC26 League</div>
+          <div class="event-hero-sub">Season 3 Premium Tournament</div>
+          <div class="event-hero-footer"><span class="badge dark">OPEN</span><span class="event-prize">$200 PRIZE POOL</span></div>
+        </div>
+        <div class="info-grid">
+          <div class="info-cell"><div class="info-val">$5.00</div><div class="info-key">Entry Fee</div></div>
+          <div class="info-cell"><div class="info-val">32</div><div class="info-key">Max Players</div></div>
+          <div class="info-cell"><div class="info-val">18</div><div class="info-key">Registered</div></div>
+          <div class="info-cell"><div class="info-val">Mar 10</div><div class="info-key">Deadline</div></div>
+        </div>
+        <div style="padding:0 14px 6px">
+          <div class="section-title">PRIZE DISTRIBUTION</div>
+          <div style="font-size:8.5px;color:#444;line-height:1.8">
+            1st Place — 50% ($100)<br>
+            2nd Place — 30% ($60)<br>
+            3rd Place — 20% ($40)
+          </div>
+          <hr class="divider">
+          <div class="section-title">FORMAT</div>
+          <div style="font-size:8px;color:#666">Single Elimination · Results submitted by players</div>
+        </div>
+        <div style="padding:6px 14px"><div class="btn">JOIN EVENT — PAY $5.00</div></div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+  <!-- 07 CONFIRM ENTRY -->
+  <div class="card" style="animation-delay:0.2s">
+    <div class="card-label">Screen 07</div>
+    <div class="card-title">Join Event / Confirm</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>CONFIRM ENTRY</span><span></span></div>
+        <div class="p" style="padding-top:8px">
+          <div style="text-align:center;font-size:10px;font-weight:600;color:#111;margin-bottom:8px">Review your entry</div>
+          <div class="confirm-box">
+            <div class="confirm-row"><span class="ck">Event</span><span class="cv">Elite FC26 League</span></div>
+            <div class="confirm-row"><span class="ck">Entry Fee</span><span class="cv">$5.00</span></div>
+            <div class="confirm-row"><span class="ck">Payment Source</span><span class="cv">Deposit Balance</span></div>
+            <div class="confirm-row"><span class="ck">Balance After</span><span class="cv">$45.00</span></div>
+            <div class="confirm-row"><span class="ck">Prize Pool</span><span class="cv">$200.00</span></div>
+            <div class="confirm-row"><span class="ck">Current Balance</span><span class="cv">$50.00</span></div>
+          </div>
+          <div class="note-box">⚠ Entry fees are non-refundable unless the event is cancelled by admin.</div>
+          <div class="btn">CONFIRM & JOIN</div>
+          <div class="btn outline">CANCEL</div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+  <!-- 08 SUBMIT RESULT -->
+  <div class="card" style="animation-delay:0.25s">
+    <div class="card-label">Screen 08</div>
+    <div class="card-title">Submit Match Result</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>SUBMIT RESULT</span><span></span></div>
+        <div style="padding:8px 14px 0">
+          <div class="hero-box" style="padding:10px 12px;margin-bottom:8px">
+            <div style="font-size:10px;font-weight:600;color:#fff">Elite FC26 League — Round 1</div>
+            <div style="font-size:8px;color:#888;margin-top:3px">ProPlayer99  vs.  ZeroFade_NG</div>
+          </div>
+          <div class="section-title">MATCH SCORE</div>
+          <div class="score-row" style="padding:0;margin-bottom:8px">
+            <div class="score-box"><div class="sb-label">My Score</div><div class="score-input">—</div></div>
+            <div class="score-box"><div class="sb-label">Opponent Score</div><div class="score-input">—</div></div>
+          </div>
+          <div class="section-title">UPLOAD EVIDENCE</div>
+          <div class="upload-box">
+            <div class="ub-title">[ Tap to Upload Screenshot ]</div>
+            <div class="ub-sub">JPG / PNG — max 5MB</div>
+          </div>
+          <div class="section-title">RESULT OUTCOME</div>
+          <div class="radio-row"><div class="radio-dot"></div>Win</div>
+          <div class="radio-row"><div class="radio-dot"></div>Loss</div>
+          <div class="radio-row"><div class="radio-dot"></div>Draw</div>
+          <div class="btn" style="margin-top:6px">SUBMIT RESULT</div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION: WALLET -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section-label">03 — Wallet & Payments</div>
+<div class="grid">
+
+  <!-- 09 WALLET -->
+  <div class="card" style="animation-delay:0.05s">
+    <div class="card-label">Screen 09</div>
+    <div class="card-title">Wallet</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>MY WALLET</span><span></span></div>
+        <div style="padding:10px 0 0">
+          <div class="wallet-card">
+            <div class="wallet-label">DEPOSIT BALANCE</div>
+            <div class="wallet-amount">$50.00</div>
+            <div class="wallet-sub-row">
+              <div class="wallet-sub"><div class="wallet-sub-label">PENDING PRIZE</div><div class="wallet-sub-val">$20.00</div></div>
+              <div class="wallet-sub"><div class="wallet-sub-label">WITHDRAWABLE</div><div class="wallet-sub-val">$60.00</div></div>
+            </div>
+          </div>
+          <div style="padding:0 14px 8px"><div class="row"><div class="btn">DEPOSIT</div><div class="btn outline">WITHDRAW</div></div></div>
+          <div style="padding:0 14px"><div class="section-title">RECENT TRANSACTIONS</div></div>
+          <div style="border:1px solid #eee;border-radius:8px;margin:0 14px;overflow:hidden">
+            <div class="tx-item"><div><div style="font-size:9px;font-weight:500">Deposit via Stripe</div><div style="font-size:7.5px;color:#aaa">Mar 4</div></div><div class="tx-amt pos">+$50.00</div></div>
+            <div class="tx-item"><div><div style="font-size:9px;font-weight:500">Event Entry — Elite League</div><div style="font-size:7.5px;color:#aaa">Mar 4</div></div><div class="tx-amt neg">-$5.00</div></div>
+            <div class="tx-item"><div><div style="font-size:9px;font-weight:500">Prize — Weekly Cup Win</div><div style="font-size:7.5px;color:#aaa">Mar 3</div></div><div class="tx-amt pos">+$80.00</div></div>
+            <div class="tx-item"><div><div style="font-size:9px;font-weight:500">Marketplace Purchase</div><div style="font-size:7.5px;color:#aaa">Mar 2</div></div><div class="tx-amt neg">-$15.00</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon"></div>Home</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item active"><div class="nav-icon"></div>Wallet</div>
+        <div class="nav-item"><div class="nav-icon"></div>Shop</div>
+        <div class="nav-item"><div class="nav-icon"></div>Profile</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 DEPOSIT -->
+  <div class="card" style="animation-delay:0.1s">
+    <div class="card-label">Screen 10</div>
+    <div class="card-title">Deposit Funds</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>ADD FUNDS</span><span></span></div>
+        <div class="p" style="padding-top:10px">
+          <div style="text-align:center;font-size:10px;font-weight:600;color:#111;margin-bottom:8px">Select Amount</div>
+          <div class="amount-grid">
+            <div class="amount-opt">$5</div>
+            <div class="amount-opt">$10</div>
+            <div class="amount-opt selected">$20</div>
+            <div class="amount-opt">$50</div>
+          </div>
+          <div class="field-label">Custom Amount</div>
+          <div class="field">Enter amount (e.g. $35.00)</div>
+          <div class="field-label">PAYMENT DETAILS (Stripe)</div>
+          <div class="field">Card Number</div>
+          <div class="row">
+            <div class="field" style="margin-bottom:0">MM / YY</div>
+            <div class="field" style="margin-bottom:0">CVV</div>
+          </div>
+          <div class="note-box" style="margin-top:8px">Deposits are non-refundable. Funds added as platform credit (Deposit Balance) only.</div>
+          <div class="btn">PAY $20.00 SECURELY</div>
+          <div style="text-align:center;font-size:8px;color:#aaa">Powered by Stripe 🔒</div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+  <!-- 11 WITHDRAWAL -->
+  <div class="card" style="animation-delay:0.15s">
+    <div class="card-label">Screen 11</div>
+    <div class="card-title">Withdrawal Request</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>WITHDRAW FUNDS</span><span></span></div>
+        <div style="padding:8px 0 0">
+          <div class="wallet-card" style="margin-bottom:10px">
+            <div class="wallet-label">AVAILABLE TO WITHDRAW</div>
+            <div class="wallet-amount">$60.00</div>
+          </div>
+          <div class="p">
+            <div class="field-label">Withdrawal Amount</div>
+            <div class="field">Enter amount</div>
+            <div class="field-label">Account Name</div>
+            <div class="field">Full name on account</div>
+            <div class="field-label">Account Number</div>
+            <div class="field">Bank account number</div>
+            <div class="field-label">Bank Name</div>
+            <div class="field">e.g. First Bank Nigeria</div>
+            <div class="note-box" style="border-color:#a7d7a9;background:#f0faf0"><span style="color:#1a6b2a;font-weight:600">KYC Status: APPROVED ✓</span><br><span style="color:#555">Verification complete — withdrawals enabled</span></div>
+            <div class="note-box">Withdrawals processed manually by admin. Processing time: 1–3 business days.</div>
+            <div class="btn">SUBMIT WITHDRAWAL REQUEST</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION: GG POINTS + MARKETPLACE -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section-label">04 — GG Points, Rankings & Marketplace</div>
+<div class="grid">
+
+  <!-- 12 GG POINTS -->
+  <div class="card" style="animation-delay:0.05s">
+    <div class="card-label">Screen 12</div>
+    <div class="card-title">GG Points & Rankings</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>GG POINTS & RANK</span><span></span></div>
+        <div style="padding:10px 0 0">
+          <div class="gg-card">
+            <div class="gg-season">SEASON 3</div>
+            <div class="gg-pts">340 GG Points</div>
+            <div class="progress-wrap"><div class="progress-fill" style="width:34%"></div></div>
+            <div class="gg-caps">Season Cap: 1000 · Monthly Cap: 250 · Resets: Apr 1</div>
+          </div>
+          <div style="padding:0 14px">
+            <div class="tier-row">
+              <div class="tier-badge"><span class="tier-icon">○</span>Bronze</div>
+              <div class="tier-badge"><span class="tier-icon">◇</span>Silver</div>
+              <div class="tier-badge active"><span class="tier-icon">◈</span>Gold</div>
+              <div class="tier-badge"><span class="tier-icon">◆</span>Diamond</div>
+            </div>
+            <div class="section-title">LEADERBOARD — TOP 10</div>
+          </div>
+          <div style="border:1px solid #eee;border-radius:8px;margin:0 14px;overflow:hidden">
+            <div class="leaderboard-row"><span class="rank">#1</span><span class="name">ZeroFade_NG</span><span class="pts">820 pts</span></div>
+            <div class="leaderboard-row"><span class="rank">#2</span><span class="name">King_Dribble</span><span class="pts">710 pts</span></div>
+            <div class="leaderboard-row me"><span class="rank">#3</span><span class="name">ProPlayer99 ◀</span><span class="pts">340 pts</span></div>
+            <div class="leaderboard-row"><span class="rank">#4</span><span class="name">FC_Boss_NG</span><span class="pts">310 pts</span></div>
+            <div class="leaderboard-row"><span class="rank">#5</span><span class="name">Striker_X</span><span class="pts">285 pts</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon"></div>Home</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Wallet</div>
+        <div class="nav-item"><div class="nav-icon"></div>Shop</div>
+        <div class="nav-item active"><div class="nav-icon"></div>Profile</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 MARKETPLACE -->
+  <div class="card" style="animation-delay:0.1s">
+    <div class="card-label">Screen 13</div>
+    <div class="card-title">Marketplace</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>MARKETPLACE</span><span class="right">🛒</span></div>
+        <div style="padding:8px 14px 6px">
+          <div style="background:#111;border-radius:7px;padding:8px 10px;font-size:8.5px;color:#ccc">GG Points: 340 &nbsp;·&nbsp; Wallet: $50.00</div>
+        </div>
+        <div class="filter-row">
+          <div class="filter-pill active">Featured</div>
+          <div class="filter-pill">Digital</div>
+          <div class="filter-pill">Physical</div>
+        </div>
+        <div class="product-grid">
+          <div class="product-card"><div class="pi">[ IMG ]</div><div class="pd"><div class="pname">FC26 Coin Pack</div><div class="pprice">200 GG</div></div></div>
+          <div class="product-card"><div class="pi">[ IMG ]</div><div class="pd"><div class="pname">Arena Jersey</div><div class="pprice">$15.00</div></div></div>
+          <div class="product-card"><div class="pi">[ IMG ]</div><div class="pd"><div class="pname">Xbox Gift Card</div><div class="pprice">$10.00</div></div></div>
+          <div class="product-card"><div class="pi">[ IMG ]</div><div class="pd"><div class="pname">GG Trophy Badge</div><div class="pprice">500 GG</div></div></div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon"></div>Home</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Wallet</div>
+        <div class="nav-item active"><div class="nav-icon"></div>Shop</div>
+        <div class="nav-item"><div class="nav-icon"></div>Profile</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 PRODUCT DETAIL -->
+  <div class="card" style="animation-delay:0.15s">
+    <div class="card-label">Screen 14</div>
+    <div class="card-title">Product Detail</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>PRODUCT DETAIL</span><span></span></div>
+        <div class="img-placeholder" style="height:80px;margin:0;border-radius:0">[ Product Image ]</div>
+        <div class="p" style="padding-top:8px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px">
+            <div style="font-size:11px;font-weight:700;color:#111;font-family:'Syne',sans-serif">FC26 Ultimate Team Pack</div>
+            <span class="badge light" style="margin-left:6px;flex-shrink:0">DIGITAL</span>
+          </div>
+          <div style="font-size:9px;color:#555;margin-bottom:3px">200 GG Points &nbsp;or&nbsp; $5.00 Wallet</div>
+          <div style="font-size:8px;color:#888;margin-bottom:8px">Stock: 47 remaining</div>
+          <hr class="divider">
+          <div class="section-title">DESCRIPTION</div>
+          <div style="font-size:8.5px;color:#555;line-height:1.6;margin-bottom:8px">Redeem a single-use code for 10,000 FC Coins in your EA account. Code delivered instantly after purchase.</div>
+          <div class="section-title">PURCHASE WITH</div>
+          <div class="row">
+            <div class="btn sm" style="width:100%;display:block;text-align:center;padding:9px">200 GG POINTS</div>
+            <div class="btn outline sm" style="width:100%;display:block;text-align:center;padding:9px">$5.00 WALLET</div>
+          </div>
+          <div class="note-box" style="margin-top:6px">GG Points cannot be converted to cash.</div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION: PROFILE & KYC -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section-label">05 — Profile, KYC & Notifications</div>
+<div class="grid">
+
+  <!-- 15 PROFILE -->
+  <div class="card" style="animation-delay:0.05s">
+    <div class="card-label">Screen 15</div>
+    <div class="card-title">Player Profile</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>MY PROFILE</span><span class="right">Edit</span></div>
+        <div class="avatar">PP</div>
+        <div class="profile-name">ProPlayer99</div>
+        <div class="profile-sub">Gold Tier · Rank #3 · Season 3</div>
+        <div style="padding:0 14px 8px">
+          <div class="row" style="margin-bottom:10px">
+            <div class="stat-box"><div class="stat-val">12</div><div class="stat-key">EVENTS</div></div>
+            <div class="stat-box"><div class="stat-val">7</div><div class="stat-key">WINS</div></div>
+            <div class="stat-box"><div class="stat-val">340</div><div class="stat-key">GG PTS</div></div>
+          </div>
+        </div>
+        <div class="menu-item"><div><div>Account Settings</div><div class="mi-sub">Email, Password, Notifications</div></div><span class="chevron">›</span></div>
+        <div class="menu-item"><div><div>KYC Verification</div><div class="mi-sub">Status: Approved ✓</div></div><span class="chevron">›</span></div>
+        <div class="menu-item"><div><div>Payment History</div><div class="mi-sub">Deposits, Withdrawals</div></div><span class="chevron">›</span></div>
+        <div class="menu-item"><div><div>Event History</div><div class="mi-sub">Past & Active Events</div></div><span class="chevron">›</span></div>
+        <div class="menu-item"><div><div>Help & Support</div><div class="mi-sub">FAQ, Contact Us</div></div><span class="chevron">›</span></div>
+        <div class="menu-item danger"><div>Log Out</div><span class="chevron">›</span></div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon"></div>Home</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Wallet</div>
+        <div class="nav-item"><div class="nav-icon"></div>Shop</div>
+        <div class="nav-item active"><div class="nav-icon"></div>Profile</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 KYC -->
+  <div class="card" style="animation-delay:0.1s">
+    <div class="card-label">Screen 16</div>
+    <div class="card-title">KYC Verification</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>KYC VERIFICATION</span><span></span></div>
+        <div class="p" style="padding-top:8px">
+          <div class="note-box">Identity verification required before processing your first withdrawal.</div>
+          <div class="field-label">Full Legal Name</div>
+          <div class="field">As shown on ID</div>
+          <div class="field-label">Date of Birth</div>
+          <div class="field">DD / MM / YYYY</div>
+          <div class="field-label" style="margin-bottom:4px">ID Type</div>
+          <div class="radio-row"><div class="radio-dot"></div>National ID</div>
+          <div class="radio-row"><div class="radio-dot"></div>Passport</div>
+          <div class="radio-row"><div class="radio-dot"></div>Driver's License</div>
+          <div class="field-label" style="margin-top:4px">Upload ID Document</div>
+          <div class="upload-box">
+            <div class="ub-title">[ Tap to Upload Front of ID ]</div>
+            <div class="ub-sub">Secure encrypted storage · max 5MB</div>
+          </div>
+          <div class="upload-box">
+            <div class="ub-title">[ Tap to Upload Back of ID ]</div>
+            <div class="ub-sub">Optional for some ID types</div>
+          </div>
+          <div class="btn">SUBMIT FOR REVIEW</div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+  <!-- 17 NOTIFICATIONS -->
+  <div class="card" style="animation-delay:0.15s">
+    <div class="card-label">Screen 17</div>
+    <div class="card-title">Notifications</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>NOTIFICATIONS</span><span class="right" style="font-size:8px">Mark read</span></div>
+        <div class="notif-item unread">
+          <div class="notif-dot"></div>
+          <div><div class="notif-title">Event Starting Soon!</div><div class="notif-sub">Elite FC26 League begins in 1 hour</div></div>
+          <div class="notif-time">2m ago</div>
+        </div>
+        <div class="notif-item unread">
+          <div class="notif-dot"></div>
+          <div><div class="notif-title">Prize Credited 🎉</div><div class="notif-sub">$80 added to prize balance</div></div>
+          <div class="notif-time">1h ago</div>
+        </div>
+        <div class="notif-item">
+          <div class="notif-dot empty"></div>
+          <div><div class="notif-title">KYC Approved</div><div class="notif-sub">Identity has been verified</div></div>
+          <div class="notif-time">Yesterday</div>
+        </div>
+        <div class="notif-item">
+          <div class="notif-dot empty"></div>
+          <div><div class="notif-title">Withdrawal Processed</div><div class="notif-sub">Your $60 withdrawal is on its way</div></div>
+          <div class="notif-time">2d ago</div>
+        </div>
+        <div class="notif-item">
+          <div class="notif-dot empty"></div>
+          <div><div class="notif-title">New Event Available</div><div class="notif-sub">Weekend Warrior Cup is now open</div></div>
+          <div class="notif-time">3d ago</div>
+        </div>
+        <div class="notif-item">
+          <div class="notif-dot empty"></div>
+          <div><div class="notif-title">Result Dispute Resolved</div><div class="notif-sub">Your result has been confirmed</div></div>
+          <div class="notif-time">4d ago</div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item active"><div class="nav-icon"></div>Home</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Wallet</div>
+        <div class="nav-item"><div class="nav-icon"></div>Shop</div>
+        <div class="nav-item"><div class="nav-icon"></div>Profile</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION: ADMIN PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section-label">06 — Admin Panel</div>
+<div class="grid">
+
+  <!-- 18 ADMIN DASHBOARD -->
+  <div class="card" style="animation-delay:0.05s">
+    <div class="card-label">Screen 18</div>
+    <div class="card-title">Admin Dashboard</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>ADMIN PANEL</span><span></span></div>
+        <div style="padding:8px 14px 4px"><div class="section-title">PLATFORM OVERVIEW</div></div>
+        <div class="admin-stat-grid">
+          <div class="admin-stat"><div class="as-val">847</div><div class="as-key">Total Users</div></div>
+          <div class="admin-stat"><div class="as-val">4</div><div class="as-key">Active Events</div></div>
+          <div class="admin-stat warn"><div class="as-val">12</div><div class="as-key">Pending KYC</div></div>
+          <div class="admin-stat warn"><div class="as-val">7</div><div class="as-key">Pending Withdrawals</div></div>
+          <div class="admin-stat"><div class="as-val">$2,450</div><div class="as-key">House Wallet</div></div>
+          <div class="admin-stat warn"><div class="as-val">3</div><div class="as-key">Risk Flags</div></div>
+        </div>
+        <div style="padding:6px 14px 4px"><div class="section-title">QUICK ACTIONS</div></div>
+        <div class="action-list-item"><span>Review Pending KYC (12)</span><span class="arrow">→</span></div>
+        <div class="action-list-item"><span>Approve Withdrawals (7)</span><span class="arrow">→</span></div>
+        <div class="action-list-item"><span>Manage Active Events</span><span class="arrow">→</span></div>
+        <div class="action-list-item"><span>View Risk Flags (3)</span><span class="arrow">→</span></div>
+        <div class="action-list-item"><span>House Wallet Top Up</span><span class="arrow">→</span></div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item active"><div class="nav-icon"></div>Users</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Finance</div>
+        <div class="nav-item"><div class="nav-icon"></div>Market</div>
+        <div class="nav-item"><div class="nav-icon"></div>Settings</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 ADMIN USER MGMT -->
+  <div class="card" style="animation-delay:0.1s">
+    <div class="card-label">Screen 19</div>
+    <div class="card-title">Admin: User Management</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>USER MANAGEMENT</span><span></span></div>
+        <div style="padding:8px 14px 6px">
+          <div class="field" style="margin-bottom:6px">Search by username, email, ID...</div>
+          <div class="filter-row" style="padding:0;margin-bottom:8px">
+            <div class="filter-pill active">All</div>
+            <div class="filter-pill">Active</div>
+            <div class="filter-pill">Frozen</div>
+            <div class="filter-pill">Flagged</div>
+          </div>
+        </div>
+        <div class="user-row">
+          <div class="user-row-top"><span class="user-row-name">ProPlayer99</span><span class="badge green">Active</span></div>
+          <div class="user-row-meta">KYC: Approved · Risk: Low</div>
+          <div class="user-row-actions"><div class="btn sm">View</div><div class="btn outline sm">Freeze</div></div>
+        </div>
+        <div class="user-row">
+          <div class="user-row-top"><span class="user-row-name">SuspectAcc_01</span><span class="badge red">Flagged</span></div>
+          <div class="user-row-meta">KYC: Pending · Risk: High</div>
+          <div class="user-row-actions"><div class="btn sm">View</div><div class="btn outline sm">Freeze</div></div>
+        </div>
+        <div class="user-row">
+          <div class="user-row-top"><span class="user-row-name">ZeroFade_NG</span><span class="badge green">Active</span></div>
+          <div class="user-row-meta">KYC: Approved · Risk: Low</div>
+          <div class="user-row-actions"><div class="btn sm">View</div><div class="btn outline sm">Freeze</div></div>
+        </div>
+        <div class="user-row">
+          <div class="user-row-top"><span class="user-row-name">FC_Boss_NG</span><span class="badge light">Frozen</span></div>
+          <div class="user-row-meta">KYC: Rejected · Risk: Med</div>
+          <div class="user-row-actions"><div class="btn sm">View</div><div class="btn outline sm">Unfreeze</div></div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item active"><div class="nav-icon"></div>Users</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Finance</div>
+        <div class="nav-item"><div class="nav-icon"></div>Market</div>
+        <div class="nav-item"><div class="nav-icon"></div>Settings</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 ADMIN EVENT MGMT -->
+  <div class="card" style="animation-delay:0.15s">
+    <div class="card-label">Screen 20</div>
+    <div class="card-title">Admin: Event Management</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>EVENT MANAGEMENT</span><span></span></div>
+        <div style="padding:8px 14px 8px"><div class="btn">+ CREATE NEW EVENT</div></div>
+        <div style="padding:0 14px 4px"><div class="section-title">ACTIVE EVENTS</div></div>
+        <div class="event-card">
+          <div class="event-title">Elite FC26 League</div>
+          <div class="event-meta">18/32 Players · $5 Entry · $200 Pool</div>
+          <div style="display:flex;gap:4px;margin-top:6px">
+            <div class="btn sm">Edit</div>
+            <div class="btn sm">Payout</div>
+            <div class="btn outline sm">Cancel</div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-title">Weekend Warrior Cup</div>
+          <div class="event-meta">32/64 Players · Free · GG Points</div>
+          <div style="display:flex;gap:4px;margin-top:6px">
+            <div class="btn sm">Edit</div>
+            <div class="btn sm">Payout</div>
+            <div class="btn outline sm">Cancel</div>
+          </div>
+        </div>
+        <div style="padding:6px 14px 4px"><div class="section-title">COMPLETED EVENTS</div></div>
+        <div class="list-item" style="margin:0 14px 4px">
+          <div><div class="li-title">Daily Blitz — Mar 3</div><div class="li-sub">16/16 Players</div></div>
+          <span class="badge light">Completed</span>
+        </div>
+        <div class="list-item" style="margin:0 14px 4px">
+          <div><div class="li-title">Quick Cup — Mar 1</div><div class="li-sub">8/8 Players</div></div>
+          <span class="badge light">Completed</span>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon"></div>Users</div>
+        <div class="nav-item active"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Finance</div>
+        <div class="nav-item"><div class="nav-icon"></div>Market</div>
+        <div class="nav-item"><div class="nav-icon"></div>Settings</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21 ADMIN FINANCE -->
+  <div class="card" style="animation-delay:0.2s">
+    <div class="card-label">Screen 21</div>
+    <div class="card-title">Admin: Financial Panel</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>FINANCIAL PANEL</span><span></span></div>
+        <div style="padding:8px 0 0">
+          <div class="house-wallet">
+            <div><div class="hw-label">HOUSE WALLET</div><div class="hw-val">$2,450.00</div></div>
+            <div class="btn sm" style="background:#f0f0f0;color:#111">TOP UP</div>
+          </div>
+          <div style="padding:0 14px 4px"><div class="section-title">PENDING WITHDRAWALS</div></div>
+          <div class="user-row">
+            <div class="user-row-top"><span class="user-row-name">ProPlayer99</span><span style="font-size:9px;font-weight:700;color:#111">$60.00</span></div>
+            <div class="user-row-meta">Requested: Mar 4 · KYC: Approved</div>
+            <div class="user-row-actions"><div class="btn sm">Pay $60</div><div class="btn outline sm">Reject</div></div>
+          </div>
+          <div class="user-row">
+            <div class="user-row-top"><span class="user-row-name">ZeroFade_NG</span><span style="font-size:9px;font-weight:700;color:#111">$120.00</span></div>
+            <div class="user-row-meta">Requested: Mar 3 · KYC: Approved</div>
+            <div class="user-row-actions"><div class="btn sm">Pay $120</div><div class="btn outline sm">Reject</div></div>
+          </div>
+          <hr class="divider" style="margin:6px 14px">
+          <div style="padding:0 14px 4px"><div class="section-title">FINANCIAL SUMMARY (MTD)</div></div>
+          <div style="border:1px solid #eee;border-radius:8px;margin:0 14px;overflow:hidden">
+            <div class="fin-row"><span class="fk">Total Deposits</span><span class="fv">$4,820.00</span></div>
+            <div class="fin-row"><span class="fk">Total Payouts</span><span class="fv">$2,150.00</span></div>
+            <div class="fin-row"><span class="fk">Platform Revenue</span><span class="fv">$670.00</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon"></div>Users</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item active"><div class="nav-icon"></div>Finance</div>
+        <div class="nav-item"><div class="nav-icon"></div>Market</div>
+        <div class="nav-item"><div class="nav-icon"></div>Settings</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 ADMIN KYC REVIEW -->
+  <div class="card" style="animation-delay:0.25s">
+    <div class="card-label">Screen 22</div>
+    <div class="card-title">Admin: KYC Review</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>KYC REVIEW</span><span></span></div>
+        <div class="p" style="padding-top:8px">
+          <div class="card-box" style="margin-bottom:8px">
+            <div style="font-size:11px;font-weight:700;color:#111;font-family:'Syne',sans-serif">SuspectAcc_01</div>
+            <div style="font-size:8px;color:#888;margin:3px 0">Submitted: Mar 4, 2026 · Passport</div>
+            <span class="badge light">PENDING</span>
+          </div>
+          <div class="section-title">SUBMITTED DOCUMENTS</div>
+          <div class="upload-box" style="margin-bottom:6px">
+            <div class="ub-title">[ ID Front — Passport — Tap to View ]</div>
+            <div class="ub-sub">Encrypted secure document</div>
+          </div>
+          <div class="upload-box">
+            <div class="ub-title">[ ID Back — Passport — Tap to View ]</div>
+            <div class="ub-sub">Encrypted secure document</div>
+          </div>
+          <div class="field-label" style="margin-top:4px">Admin Notes (Optional)</div>
+          <div class="field" style="height:36px;color:#ccc">Add internal notes...</div>
+          <div class="row" style="margin-top:4px">
+            <div class="btn">APPROVE</div>
+            <div class="btn outline">REJECT</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bar"></div>
+    </div>
+  </div>
+
+  <!-- 23 ADMIN MARKETPLACE -->
+  <div class="card" style="animation-delay:0.3s">
+    <div class="card-label">Screen 23</div>
+    <div class="card-title">Admin: Marketplace</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span></span><span>MARKETPLACE MGMT</span><span></span></div>
+        <div style="padding:8px 14px 8px"><div class="btn">+ ADD NEW ITEM</div></div>
+        <div style="padding:0 14px 4px"><div class="section-title">INVENTORY</div></div>
+        <div class="user-row">
+          <div class="user-row-top"><span class="user-row-name">FC26 Coin Pack</span><span class="badge light">Digital</span></div>
+          <div class="user-row-meta">Stock: 47 codes · Price: 200 GG</div>
+          <div class="user-row-actions"><div class="btn sm">Edit</div><div class="btn outline sm">Add Codes</div></div>
+        </div>
+        <div class="user-row">
+          <div class="user-row-top"><span class="user-row-name">Arena Jersey</span><span class="badge light">Physical</span></div>
+          <div class="user-row-meta">Stock: 12 units · Price: $15.00</div>
+          <div class="user-row-actions"><div class="btn sm">Edit</div><div class="btn outline sm">Orders</div></div>
+        </div>
+        <div class="user-row">
+          <div class="user-row-top"><span class="user-row-name">Xbox Gift Card</span><span class="badge light">Digital</span></div>
+          <div class="user-row-meta">Stock: 8 codes · Price: $10.00</div>
+          <div class="user-row-actions"><div class="btn sm">Edit</div><div class="btn outline sm">Add Codes</div></div>
+        </div>
+        <div class="user-row">
+          <div class="user-row-top"><span class="user-row-name">GG Trophy Badge</span><span class="badge light">Digital</span></div>
+          <div class="user-row-meta">Stock: ∞ codes · Price: 500 GG</div>
+          <div class="user-row-actions"><div class="btn sm">Edit</div><div class="btn outline sm">Add Codes</div></div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item"><div class="nav-icon"></div>Users</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Finance</div>
+        <div class="nav-item active"><div class="nav-icon"></div>Market</div>
+        <div class="nav-item"><div class="nav-icon"></div>Settings</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24 RISK FLAGS -->
+  <div class="card" style="animation-delay:0.35s">
+    <div class="card-label">Screen 24</div>
+    <div class="card-title">Admin: Risk Flags</div>
+    <div class="phone">
+      <div class="status-bar"><span>9:41</span><div class="notch"></div><span>●●● 100%</span></div>
+      <div class="screen" style="padding-bottom:52px">
+        <div class="app-header"><span class="back">← Back</span><span>RISK & ABUSE FLAGS</span><span></span></div>
+        <div class="p" style="padding-top:8px">
+          <div class="note-box"><b>3 accounts flagged for admin review.</b><br>No accounts deleted automatically — manual review required.</div>
+          <div class="risk-card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+              <div style="font-size:10px;font-weight:700;color:#111">SuspectAcc_01</div>
+              <div class="risk-score" style="color:#b91c1c">87/100</div>
+            </div>
+            <div style="font-size:8px;color:#555;margin-bottom:5px">Multiple rapid deposits + unverified KYC</div>
+            <div style="font-size:7.5px;color:#888;margin-bottom:5px">Flagged: Mar 4</div>
+            <div class="row"><div class="btn sm" style="width:100%;text-align:center;display:block;padding:7px">Review</div><div class="btn outline sm" style="width:100%;text-align:center;display:block;padding:7px">Freeze</div></div>
+          </div>
+          <div class="risk-card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+              <div style="font-size:10px;font-weight:700;color:#111">Ghost_Player_X</div>
+              <div class="risk-score" style="color:#d97706">72/100</div>
+            </div>
+            <div style="font-size:8px;color:#555;margin-bottom:5px">Abnormal win rate — 12/12 events won</div>
+            <div style="font-size:7.5px;color:#888;margin-bottom:5px">Flagged: Mar 3</div>
+            <div class="row"><div class="btn sm" style="width:100%;text-align:center;display:block;padding:7px">Review</div><div class="btn outline sm" style="width:100%;text-align:center;display:block;padding:7px">Freeze</div></div>
+          </div>
+          <div class="risk-card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+              <div style="font-size:10px;font-weight:700;color:#111">FastCash_22</div>
+              <div class="risk-score" style="color:#92400e">65/100</div>
+            </div>
+            <div style="font-size:8px;color:#555;margin-bottom:5px">Withdrawal request within 10 min of deposit</div>
+            <div style="font-size:7.5px;color:#888;margin-bottom:5px">Flagged: Mar 2</div>
+            <div class="row"><div class="btn sm" style="width:100%;text-align:center;display:block;padding:7px">Review</div><div class="btn outline sm" style="width:100%;text-align:center;display:block;padding:7px">Freeze</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-item active"><div class="nav-icon"></div>Users</div>
+        <div class="nav-item"><div class="nav-icon"></div>Events</div>
+        <div class="nav-item"><div class="nav-icon"></div>Finance</div>
+        <div class="nav-item"><div class="nav-icon"></div>Market</div>
+        <div class="nav-item"><div class="nav-icon"></div>Settings</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="text-align:center;padding:40px;font-size:10px;color:#333;border-top:1px solid #1e1e1e">
+  GG ARENA — MVP 1.1 WIREFRAMES · 24 SCREENS · © 2026
+</div>
+
+</body>
+</html>
